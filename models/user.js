@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
-  class Todo extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,16 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
-      this.belongsTo(models.User)
+      this.hasMany(models.Todo) // 應該是User.hasMany()但是是在class裡，可以用this（因為static是User.associate所以this = User）
     }
   }
-  Todo.init({
+  User.init({
     name: DataTypes.STRING,
-    isDone: DataTypes.BOOLEAN
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Todo',
+    modelName: 'User',
     paranoid: true// 提供soft delete功能
   })
-  return Todo
+  return User
 }

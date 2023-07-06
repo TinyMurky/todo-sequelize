@@ -1,0 +1,12 @@
+const express = require('express')
+const router = express.Router()
+const { authenticator } = require('../middleware/auth')
+const home = require('./modules/home')
+const todo = require('./modules/todo')
+const user = require('./modules/user')
+const auth = require('./modules/auth')
+router.use('/auth', auth)
+router.use('/users', user)
+router.use('/todos', authenticator, todo)
+router.use('/', authenticator, home)
+module.exports = router

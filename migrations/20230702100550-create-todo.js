@@ -1,35 +1,36 @@
 'use strict'
-import { DataTypes } from 'sequelize'
 /** @type {import('sequelize-cli').Migration} */
-const migration = {
+module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('todos', {
+    await queryInterface.createTable('Todos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: Sequelize.INTEGER
       },
       name: {
-        type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       isDone: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        type: Sequelize.DATE
       }
     })
   },
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('todos')
+    await queryInterface.dropTable('Todos')
   }
 }
-export default migration
