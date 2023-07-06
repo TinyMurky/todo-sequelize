@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "請把我改成您的mysql帳號名(ex:root)",
+    "password":"請把我改成您的mysql密碼(ex:password)",
+    "database": "todo_sequenlize",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
